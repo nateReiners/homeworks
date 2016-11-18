@@ -16,7 +16,7 @@ class Map
 
   def lookup(key)
     @map.each do |k, v|
-      return k, v if k == key
+      return v if k == key
     end
   end
 
