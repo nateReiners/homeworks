@@ -9,9 +9,10 @@ class Stack
 
   def remove
     @stack.pop
+    @stack
   end
 
   def show
-    print @stack
+    print "\b#{@stack}\n"
   end
 end
