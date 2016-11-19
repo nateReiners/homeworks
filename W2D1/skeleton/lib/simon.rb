@@ -24,12 +24,12 @@ class Simon
       @game_over = true
     else
       round_success_message
+      @sequence_length += 1
     end
   end
 
   def show_sequence
     add_random_color
-    @sequence_length += 1
     print "\n"
     @seq.each do |col|
       print " #{col} |"
@@ -54,7 +54,7 @@ class Simon
   end
 
   def game_over_message
-    puts "Game over, you lose!"
+    puts "Game over, you lose! Your score was #{sequence_length - 1}"
   end
 
   def reset_game
@@ -64,5 +64,7 @@ class Simon
   end
 end
 
-x = Simon.new
-x.play
+if __FILE__ == $PROGRAM_NAME
+  game = Simon.new
+  game.play
+end
