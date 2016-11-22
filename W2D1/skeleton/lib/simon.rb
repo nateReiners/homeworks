@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Simon
   COLORS = %w(red blue green yellow)
 
@@ -10,18 +12,20 @@ class Simon
   end
 
   def play
-    until game_over
-      take_turn
-    end
-    game_over_message
-    reset_game
+    take_turn until game_over
+
   end
 
   def take_turn
     show_sequence
     system("cls")
-    if require_sequence != seq
+    guess = require_sequence
+    if guess != seq
       game_over = true
+      game_over_message
+      reset_game
+      puts "Beginning new game. . ."
+      sleep(2)
     else
       round_success_message
       @sequence_length += 1
@@ -32,7 +36,7 @@ class Simon
     add_random_color
     print "\n"
     seq.each do |col|
-      print " #{col} |"
+      print " #{col} |".colorize(col.to_sym)
       sleep(1)
     end
     print "\n"
@@ -40,7 +44,7 @@ class Simon
 
   def require_sequence
     col_abbrvs = %w(r b g y)
-    puts "enter the previous color sequence! (r b g y)"
+    puts "enter the previous color sequence! (use keys 'r', 'b', 'g', 'y')"
     seq_guess = gets.chomp.split("")
     seq_guess.map { |char| COLORS[col_abbrvs.index(char)] }
   end
@@ -58,8 +62,8 @@ class Simon
   end
 
   def reset_game
-    seq = []
-    sequence_length = 1
+    @seq = []
+    sequence_length = 0
     game_over = false
   end
 end
