@@ -12,6 +12,7 @@ class Board
   def place_stones
     @cups.each_with_index do |cup, idx|
       next if idx == 6 || idx == 13
+
         4.times do
           cup << :stone
         end
