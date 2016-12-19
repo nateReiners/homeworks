@@ -41,8 +41,17 @@ function Elephant(name, height, tricks) {
   }
 };
 
-let e1 = new Elephant("Nate", "72", ["painting a picture", "snowboarding down a mountain", "running fast"]);
-e1.grow();
+function elephantHelper(elephant) {
+  console.log(`${elephant.name} is strutting by in the big parade!`)
+}
 
-e1.addTrick("doing a kickflip");
-e1.play();
+let ellie = new Elephant("Ellie", 185, ["giving human friends a ride", "playing hide and seek"]);
+let charlie = new Elephant("Charlie", 200, ["painting pictures", "spraying water for a slip and slide"]);
+let kate = new Elephant("Kate", 234, ["writing letters", "stealing peanuts"]);
+let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doing elephant ballet"]);
+
+let herd = [ellie, charlie, kate, micah];
+
+herd.forEach(elephant => {
+  elephantHelper(elephant);
+})
