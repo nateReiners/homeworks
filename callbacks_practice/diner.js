@@ -8,7 +8,11 @@ function bfastOrder() {
   };
 };
 
+//
+// let order = bfastOrder();
+// order("a bagel");
+// order("a doughnut")
 
-let order = bfastOrder();
-order("a bagel");
-order("a doughnut")
+function hammerTime(time) {
+  global.setTimeout(() => console.log(`${time} is hammertime!`), time);
+};
